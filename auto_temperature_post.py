@@ -24,25 +24,9 @@ if __name__ == '__main__':
     serverchan = inform.serverchan
     ak = inform.api['ak']
     sk = inform.api['sk']
-    try:
-        sleep(random.uniform(5, 15))
-        date_time = datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")
-        print("时间:", date_time)
-        # 获取伪造地址
-        if int(enable_gps) == 1 and float(LON) != 0 and float(LAT) != 0:
-            result, json_data = get_location(LAT=LAT, LON=LON, ak=ak, sk=sk)
-            if result:
-                province = json_data['result']['addressComponent']['province']
-                city = json_data['result']['addressComponent']['city']
-                district = json_data['result']['addressComponent']['district']
-            else:
-                province = ''
-                city = ''
-                district = ''
-        else:
-            province = ''
-            city = ''
-            district = ''
+    province = '江苏省'
+    city = '南京市'
+    district = '玄武区'
 
         res = seu_clockin(username, password, province, city, district, LAT, LON)
         if res == "打卡成功!":
